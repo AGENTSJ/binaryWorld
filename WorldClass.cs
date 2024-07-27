@@ -14,7 +14,7 @@ namespace Worlds
         public List<WorldObject> worldObjects;
 
         public int[,,] worldSpace;
-        // public int[][][] world = new int[100][][];
+
         public World(int x, int y, int z)
         {
             this.maxX = x;
@@ -22,10 +22,6 @@ namespace Worlds
             this.maxZ = z;
 
             worldSpace = new int[z, y, x];
-            // for(int i = 0;i<100;i++){
-            //     world[i] = new int[100][];
-            //     world[i][i] = new int[100];
-            // }
             worldObjects = new List<WorldObject>();
         }
 
@@ -41,17 +37,28 @@ namespace Worlds
         public Coordinate focalPoint;
         public PlaneEquation cameraPlaneEq;
         
+        public int height;
+        public int width;
+        public int[,] cameraScreen;
+
         public Camera(Coordinate topLeft, Coordinate bottomRight)
         {
+            setCameraEq(topLeft,bottomRight);
+            this. height = (int)(bottomRight.Y - topLeft.Y);
+            this.width  = (int)(bottomRight.X-topLeft.X);
+            cameraScreen = new int[height,width];
+        }
+        public void setCameraEq(Coordinate topLeft, Coordinate bottomRight){
+            
             this.topLeft = topLeft;
             this.bottomRight = bottomRight;
-            //obtaing other two cordinates with just in case can be removed if foudn useless
-            this.topRight = new Coordinate(bottomRight.X, topLeft.Y,0);
-            this.bottomLeft = new Coordinate(topLeft.X, bottomRight.Y,0);  
+            this.topRight = new Coordinate(bottomRight.X, topLeft.Y,this.topLeft.Z);
+            this.bottomLeft = new Coordinate(topLeft.X, bottomRight.Y,bottomRight.Z);  
 
             this.cameraPlaneEq = Computation.FindPlaneEquation(this.topLeft,this.bottomLeft,this.topRight);
             
-            this.focalPoint = new Coordinate(this.topRight.X/2, this.topRight.Y/2 ,zoomFactor);
+            this.focalPoint = new Coordinate(this.bottomRight.X/2, this.bottomRight.Y/2 ,this.bottomRight.Z+zoomFactor);
+    
         }
 
     }

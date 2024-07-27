@@ -1,5 +1,6 @@
 ﻿using ComputationTypes;
 using System;
+using Worlds;
 
 
 namespace Computations
@@ -64,5 +65,10 @@ namespace Computations
             return interSectionCoordinate;
 
         }
+    
+        // static public bool IsInsideCameraPlane(Coordinate point,PlaneEquation cameraPlaneEq ){
+
+        //     return true;
+        // }
     }
 }

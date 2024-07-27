@@ -10,7 +10,7 @@ namespace Worlds
         public int maxY;
         public int maxZ;
 
-        public Camera camera;
+        public Camera? camera;
         public List<WorldObject> worldObjects;
 
         public int[,,] worldSpace;
@@ -61,6 +61,7 @@ namespace Worlds
     
         }
 
+        
     }
     public class WorldObject
     {

@@ -18,7 +18,7 @@ namespace WorldFunctions
     class WorldFunction
     {
 
-        const char WHITE_PIXEL = '█';
+        const char WHITE_PIXEL = '.';
         const char BLACK_PIXEL = ' ';
         const char TOP_WINDOW_BOUNDARY = '+';
         const char SIDE_WINDOW_BOUNDARY = '|';

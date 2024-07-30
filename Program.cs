@@ -104,12 +104,7 @@ namespace binaryWorld
                             camera.cameraScreen = new int[camera.height, camera.width];
                             break;
                         }
-                    case ROTATE_LEFT:
-                        {
-
-                        }
-
-
+                        
                 }
             }
         }

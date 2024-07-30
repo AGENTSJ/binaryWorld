@@ -38,7 +38,7 @@ namespace Computations
             planeEq.coifY = normal.j;
             planeEq.coifZ = normal.k;
 
-            planeEq.constant  = -1 * normal.i * coordP.X;
+            planeEq.constant = -1 * normal.i * coordP.X;
             planeEq.constant += -1 * normal.j * coordP.Y;
             planeEq.constant += -1 * normal.k * coordP.Z;
 
@@ -60,12 +60,12 @@ namespace Computations
             y = startPointA.Y + (ab.j * t);
             z = startPointA.Z + (ab.k * t);
 
-            Coordinate interSectionCoordinate = new Coordinate(x,y,z);
-            
+            Coordinate interSectionCoordinate = new Coordinate(x, y, z);
+
             return interSectionCoordinate;
 
         }
-    
+
         // static public bool IsInsideCameraPlane(Coordinate point,PlaneEquation cameraPlaneEq ){
 
         //     return true;

@@ -1,8 +1,8 @@
 ﻿using System;
 using ComputationTypes;
-using Computations;
-using Worlds;
-using WorldFunctions;
+using world;
+using camera;
+using worldObject;
 
 namespace binaryWorld
 {
@@ -30,16 +30,15 @@ namespace binaryWorld
             World world = new World(X, Y, Z);
             Camera camera = new Camera(new Coordinate(0, 0, 10), new Coordinate(30, 30, 10));
 
-            WorldFunction worldFunctions = new WorldFunction(world);
-            worldFunctions.AddCubeToWorld(new Coordinate(12, 12, 94), 6);
-            worldFunctions.PlaceObjectsInWorld();
+            world.AddCubeToWorld(new Coordinate(12, 12, 94), 6);
+            world.PlaceObjectsInWorld();
 
 
             while (true)
             {
                 Console.Clear();
-                worldFunctions.SetProjections(camera);
-                worldFunctions.RenderProjections(camera);
+                world.SetProjections(camera);
+                world.RenderProjections(camera);
 
                 Console.WriteLine("move forward : " + MOVE_FORWARD);
                 Console.WriteLine("move back : " + MOVE_BACK);
@@ -104,7 +103,7 @@ namespace binaryWorld
                             camera.cameraScreen = new int[camera.height, camera.width];
                             break;
                         }
-                        
+
                 }
             }
         }

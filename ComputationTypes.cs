@@ -1,6 +1,4 @@
-﻿using System;
-using Computations;
-
+﻿
 namespace ComputationTypes
 {
     public class Coordinate

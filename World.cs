@@ -4,14 +4,14 @@ using camera;
 using Computations;
 
 /*
-    Namespace used for storing functions that helps for the following Operations:
+Namespace used for creating a world and related operation
 
-        Operations :
-            
-            1 Adding objects into the world                                -> AddbjectToWorld
-            2 palacing objects inside the 3d array                         -> PlaceObjectsInWorld
-            3 Sets projections of 3d objects to a 2d plane (camera plane ) -> SetProjections
-            4 Displays the projection on camera plane to user              -> RenderProjections
+    Operations :
+        
+        1 Adding objects into the world                                -> AddbjectToWorld
+        2 palacing objects inside the 3d array                         -> PlaceObjectsInWorld
+        3 Sets projections of 3d objects to a 2d plane (camera plane ) -> SetProjections
+        4 Displays the projection on camera plane to user              -> RenderProjections
 */
 namespace world {
 
@@ -44,6 +44,9 @@ namespace world {
             this.worldObjects.Add(worldObject);
         }
 
+        /*
+            places all occupied coordinated of a object inside world array
+        */
         public void PlaceObjectsInWorld()
         {
 
@@ -63,16 +66,16 @@ namespace world {
                     this.worldSpace[z, y, x] = 1;
                 }
             }
-
         }
 
+        /*
+            adds a basic cube to list of worldobject (worldobjects)
+        */
         public void AddCubeToWorld(Coordinate spawnPoint, int sideLength)
         {
             int z = (int)spawnPoint.Z;
             int y = (int)spawnPoint.Y;
             int x = (int)spawnPoint.X;
-
-            // this.worldSpace[z, y, x] = 1;
 
             WorldObject cube = new WorldObject();
 
@@ -92,6 +95,9 @@ namespace world {
             this.worldObjects.Add(cube);
         }
 
+        /*
+            takes all the occupied coordinates from all the objects present inside worldobjects list and set their 2d projection to camera plane
+        */
         public void SetProjections(Camera camera)
         {
 
@@ -100,13 +106,13 @@ namespace world {
             Coordinate focalPoint = camera.focalPoint;
             PlaneEquation cameraPlaneEq = camera.cameraPlaneEq;
 
-            //marking the projections of objects in the world to screen 1 
-            foreach (WorldObject worldObject in worldObjects)
+            
+            foreach (WorldObject worldObject in worldObjects)//looping through each object in the world
             {
 
                 List<Coordinate> occupiedCoordinates = worldObject.occupiedCoordinates;
 
-                foreach (Coordinate occupiedCoordinate in occupiedCoordinates)
+                foreach (Coordinate occupiedCoordinate in occupiedCoordinates)//looping through each cordinate in an object
                 {
 
                     Coordinate projectionPoint = Computation.FindIntersectionPoint(occupiedCoordinate, focalPoint, cameraPlaneEq);
@@ -119,19 +125,17 @@ namespace world {
                     }
                     catch (Exception)
                     {
-                        //actiavted when the intersection point avoid 
+                        //actiavted when the intersection point falls outside the camera plane
                     }
-
                 }
             }
-
         }
-
+        /*
+            Displays Camera Screen  to console 
+        */
         public void RenderProjections(Camera camera)
         {
-            /*
-                Displays Camera Screen  to console 
-            */
+            
             int[,] screen = camera.cameraScreen;
             int screenHeight = camera.height;
             int screenWidth = camera.width;

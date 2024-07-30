@@ -21,11 +21,11 @@ namespace binaryWorld
             const string MOVE_BACK = "s";
             const string MOVE_UP = "q";
             const string MOVE_DOWN = "z";
-            const string ROTATE_RIGHT = "rr";
-            const string ROTATE_LEFT = "rl";
+            // const string ROTATE_RIGHT = "rr";
+            // const string ROTATE_LEFT = "rl";
 
             const int STEP = 10;
-            const int STEP_ANGLE = 10;
+            // const int STEP_ANGLE = 10;
 
             World world = new World(X, Y, Z);
             Camera camera = new Camera(new Coordinate(0, 0, 10), new Coordinate(30, 30, 10));
@@ -40,15 +40,17 @@ namespace binaryWorld
                 world.SetProjections(camera);
                 world.RenderProjections(camera);
 
-                Console.WriteLine("move forward : " + MOVE_FORWARD);
-                Console.WriteLine("move back : " + MOVE_BACK);
-                Console.WriteLine("move left : " + MOVE_LEFT);
-                Console.WriteLine("move right : " + MOVE_RIGHT);
-                Console.WriteLine("move up : " + MOVE_UP);
-                Console.WriteLine("move down : " + MOVE_DOWN);
-                string userActions = string.Empty;
+                Console.WriteLine("\nMove forward : " + MOVE_FORWARD);
+                Console.WriteLine("Move back      : " + MOVE_BACK);
+                Console.WriteLine("Move left      : " + MOVE_LEFT);
+                Console.WriteLine("Move right     : " + MOVE_RIGHT);
+                Console.WriteLine("Move up        : " + MOVE_UP);
+                Console.WriteLine("Move down      : " + MOVE_DOWN);
+                Console.WriteLine();
+                Console.Write("> ");
+                string? userActions = string.Empty;
                 userActions = Console.ReadLine();
-
+                
                 Coordinate newTopLeft = new Coordinate(camera.topLeft.X, camera.topLeft.Y, camera.topLeft.Z);
                 Coordinate newbottomRight = new Coordinate(camera.bottomRight.X, camera.bottomRight.Y, camera.bottomRight.Z);
 
@@ -56,54 +58,34 @@ namespace binaryWorld
                 {
                     case MOVE_FORWARD:
                         {
-                            newTopLeft.Z += STEP;
-                            newbottomRight.Z += STEP;
-
-                            camera.setCameraEq(newTopLeft, newbottomRight);
-                            camera.cameraScreen = new int[camera.height, camera.width];
+                            camera.MoveForward(STEP);
                             break;
                         }
                     case MOVE_BACK:
                         {
-                            newTopLeft.Z -= STEP;
-                            newbottomRight.Z -= STEP;
-                            camera.setCameraEq(newTopLeft, newbottomRight);
-                            camera.cameraScreen = new int[camera.height, camera.width];
+                            camera.MoveBackward(STEP);
                             break;
                         }
                     case MOVE_RIGHT:
                         {
-                            newTopLeft.X += STEP;
-                            newbottomRight.X += STEP;
-                            camera.setCameraEq(newTopLeft, newbottomRight);
-                            camera.cameraScreen = new int[camera.height, camera.width];
+                            camera.MoveRight(STEP);
                             break;
                         }
                     case MOVE_LEFT:
                         {
-                            newTopLeft.X -= STEP;
-                            newbottomRight.X -= STEP;
-                            camera.setCameraEq(newTopLeft, newbottomRight);
-                            camera.cameraScreen = new int[camera.height, camera.width];
+                            camera.MoveLeft(STEP);
                             break;
                         }
                     case MOVE_UP:
                         {
-                            newTopLeft.Y += STEP;
-                            newbottomRight.Y += STEP;
-                            camera.setCameraEq(newTopLeft, newbottomRight);
-                            camera.cameraScreen = new int[camera.height, camera.width];
+                            camera.MoveUp(STEP);
                             break;
                         }
                     case MOVE_DOWN:
                         {
-                            newTopLeft.Y -= STEP;
-                            newbottomRight.Y -= STEP;
-                            camera.setCameraEq(newTopLeft, newbottomRight);
-                            camera.cameraScreen = new int[camera.height, camera.width];
+                            camera.MoveDown(STEP);
                             break;
                         }
-
                 }
             }
         }

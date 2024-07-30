@@ -36,6 +36,49 @@ namespace camera {
 
         }
 
+        public void MoveForward(int step){
 
+            this.topLeft.Z += step;
+            this.bottomRight.Z += step;
+            this.setCameraEq(this.topLeft, this.bottomRight);
+            this.cameraScreen = new int[this.height, this.width];
+                            
+        }
+        public void MoveBackward(int step){
+
+            this.topLeft.Z -= step;
+            this.bottomRight.Z -= step;
+            this.setCameraEq(this.topLeft, this.bottomRight);
+            this.cameraScreen = new int[this.height, this.width];
+        }
+        public void MoveLeft(int step){
+
+            this.topLeft.X += step;
+            this.bottomRight.X += step;
+            this.setCameraEq(this.topLeft, this.bottomRight);
+            this.cameraScreen = new int[this.height, this.width];
+        }
+
+        public void MoveRight(int step){
+
+            this.topLeft.X -= step;
+            this.bottomRight.X -= step;
+            this.setCameraEq(this.topLeft, this.bottomRight);
+            this.cameraScreen = new int[this.height, this.width];
+        }
+
+        public void MoveUp(int step){
+            this.topLeft.Y -= step;
+            this.bottomRight.Y -= step;
+            this.setCameraEq(this.topLeft, this.bottomRight);
+            this.cameraScreen = new int[this.height, this.width];
+                            
+        }
+        public void MoveDown(int step){
+            this.topLeft.Y += step;
+            this.bottomRight.Y += step;
+            this.setCameraEq(this.topLeft, this.bottomRight);
+            this.cameraScreen = new int[this.height, this.width];
+        }
     }
 }

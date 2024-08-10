@@ -30,7 +30,7 @@ namespace binaryWorld
             World world = new World(X, Y, Z);
             Camera camera = new Camera(new Coordinate(0, 0, 10), new Coordinate(30, 30, 10));
 
-            world.AddCubeToWorld(new Coordinate(12, 12, 94), 6);
+            world.AddCubeToWorld(new Coordinate(12, 12, 94), 5);
             world.PlaceObjectsInWorld();
 
 
@@ -40,7 +40,7 @@ namespace binaryWorld
                 world.SetProjections(camera);
                 world.RenderProjections(camera);
 
-                Console.WriteLine("\nMove forward : " + MOVE_FORWARD);
+                Console.WriteLine("\nMove forward   : " + MOVE_FORWARD);
                 Console.WriteLine("Move back      : " + MOVE_BACK);
                 Console.WriteLine("Move left      : " + MOVE_LEFT);
                 Console.WriteLine("Move right     : " + MOVE_RIGHT);

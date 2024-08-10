@@ -116,8 +116,8 @@ namespace world {
                 {
 
                     Coordinate projectionPoint = Computation.FindIntersectionPoint(occupiedCoordinate, focalPoint, cameraPlaneEq);
-                    int xProjection = (int)projectionPoint.X;
-                    int yProjection = (int)projectionPoint.Y;
+                    int xProjection = (int)projectionPoint.X- (int)camera.topLeft.X;
+                    int yProjection = (int)projectionPoint.Y - (int)camera.topLeft.Y;
 
                     try
                     {

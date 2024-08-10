@@ -7,7 +7,7 @@ Binary Representation: Visualizes 3D objects using only two characters: (.) and 
 3D Rendering: Utilizes plane intersection algorithms to project 3D objects onto a 2D plane.
 
 ## Why
-just for fun 
+Just for fun 
 
 ## How It Works
 Binary World renders 3D objects by calculating intersections between 3D planes and the viewer's perspective. The objects are then displayed in the console as a grid of characters by maping these intersection points inside a array grid.

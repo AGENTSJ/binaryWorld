@@ -130,6 +130,7 @@ namespace world {
                 }
             }
         }
+
         /*
             Displays Camera Screen  to console 
         */
@@ -170,6 +171,5 @@ namespace world {
 
             Console.WriteLine(new string(TOP_WINDOW_BOUNDARY, camera.width + PADDING));
         }
-
     }
 }

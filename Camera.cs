@@ -1,5 +1,6 @@
 using ComputationTypes;
 using Computations;
+
 namespace camera {
     public class Camera
     {
@@ -10,7 +11,6 @@ namespace camera {
         public double zoomFactor = -5;
         public Coordinate focalPoint;
         public PlaneEquation cameraPlaneEq;
-
         public int height;
         public int width;
         public int[,] cameraScreen;
@@ -22,6 +22,7 @@ namespace camera {
             this.width = (int)(bottomRight.X - topLeft.X);
             cameraScreen = new int[height, width];
         }
+
         public void setCameraEq(Coordinate topLeft, Coordinate bottomRight)
         {
 
@@ -36,45 +37,49 @@ namespace camera {
 
         }
 
-        public void MoveForward(int step){
-
+        public void MoveForward(int step)
+        {
             this.topLeft.Z += step;
             this.bottomRight.Z += step;
             this.setCameraEq(this.topLeft, this.bottomRight);
             this.cameraScreen = new int[this.height, this.width];
                             
         }
-        public void MoveBackward(int step){
 
+        public void MoveBackward(int step)
+        {
             this.topLeft.Z -= step;
             this.bottomRight.Z -= step;
             this.setCameraEq(this.topLeft, this.bottomRight);
             this.cameraScreen = new int[this.height, this.width];
         }
-        public void MoveLeft(int step){
 
+        public void MoveLeft(int step)
+        {
             this.topLeft.X += step;
             this.bottomRight.X += step;
             this.setCameraEq(this.topLeft, this.bottomRight);
             this.cameraScreen = new int[this.height, this.width];
         }
 
-        public void MoveRight(int step){
-
+        public void MoveRight(int step)
+        {
             this.topLeft.X -= step;
             this.bottomRight.X -= step;
             this.setCameraEq(this.topLeft, this.bottomRight);
             this.cameraScreen = new int[this.height, this.width];
         }
 
-        public void MoveUp(int step){
+        public void MoveUp(int step)
+        {
             this.topLeft.Y -= step;
             this.bottomRight.Y -= step;
             this.setCameraEq(this.topLeft, this.bottomRight);
-            this.cameraScreen = new int[this.height, this.width];
-                            
+            this.cameraScreen = new int[this.height, this.width];      
         }
-        public void MoveDown(int step){
+
+        public void MoveDown(int step)
+        {
             this.topLeft.Y += step;
             this.bottomRight.Y += step;
             this.setCameraEq(this.topLeft, this.bottomRight);

@@ -1,8 +1,6 @@
-﻿using System;
-using ComputationTypes;
+﻿using ComputationTypes;
 using world;
 using camera;
-using worldObject;
 
 namespace binaryWorld
 {
@@ -51,9 +49,6 @@ namespace binaryWorld
                 string? userActions = string.Empty;
                 userActions = Console.ReadLine();
                 
-                Coordinate newTopLeft = new Coordinate(camera.topLeft.X, camera.topLeft.Y, camera.topLeft.Z);
-                Coordinate newbottomRight = new Coordinate(camera.bottomRight.X, camera.bottomRight.Y, camera.bottomRight.Z);
-
                 switch (userActions)
                 {
                     case MOVE_FORWARD:
